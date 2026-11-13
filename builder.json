@@ -1,0 +1,22 @@
+{
+  "project": "trust_app_final",
+  "platform": "ios",
+  "github": {
+    "owner": "ahmed2saleh33a-ops",
+    "repo": "trust_app_final"
+  },
+  "provider": "github",
+  "codemagic": {},
+  "bitrise": {},
+  "ios": {
+    "path": "ios",
+    "bundleId": "com.example.trustAppFinal"
+  },
+  "flutter": {
+    "version": "3.44.7",
+    "watch": {}
+  },
+  "reactNative": {},
+  "kmp": {},
+  "mobai": {}
+}
