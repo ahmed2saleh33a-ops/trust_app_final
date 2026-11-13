@@ -1,0 +1,206 @@
+ش<?xml version="1.0" encoding="utf-8"?>
+<!-- android/app/src/main/AndroidManifest.xml -->
+<!-- ✅ نسخة معدلة نهائية - تمت إزالة مراجع Firebase -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.flutter_app">
+
+    <!-- =================================== -->
+    <!-- 📡 الأذونات الأساسية للشبكة -->
+    <!-- =================================== -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- =================================== -->
+    <!-- 🗺️ أذونات الموقع للإضاءة الذكية -->
+    <!-- =================================== -->
+    
+    <!-- موقع دقيق (GPS) - لحساب الشروق والغروب بدقة -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    
+    <!-- موقع تقريبي (شبكة/واي فاي) - كبديل إذا كان GPS غير متاح -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- =================================== -->
+    <!-- 🎤 الأذونات الصوتية للمساعد الصوتي والريلز -->
+    <!-- =================================== -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <!-- =================================== -->
+    <!-- 📸 أذونات الكاميرا والوسائط -->
+    <!-- =================================== -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- أندرويد 13+ (API 33) - صلاحيات الوسائط الجديدة -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+
+    <!-- ≤ أندرويد 12 (لتوافق رجعي) -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    
+    <!-- للكتابة على التخزين الخارجي (حفظ الملفات) -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
+
+    <!-- =================================== -->
+    <!-- 🔔 أذونات الإشعارات -->
+    <!-- =================================== -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    
+    <!-- للاهتزاز عند استلام الإشعارات -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- =================================== -->
+    <!-- 🔋 أذونات توفير الطاقة (اختياري) -->
+    <!-- =================================== -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- =================================== -->
+    <!-- 🎯 تعريفات الميزات (غير إجبارية) -->
+    <!-- =================================== -->
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+    
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <!-- =================================== -->
+    <!-- 📱 التطبيق -->
+    <!-- =================================== -->
+    <application
+        android:name="${applicationName}"
+        android:label="احمد القريشي"
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:allowBackup="true"
+        android:theme="@style/LaunchTheme"
+        android:requestLegacyExternalStorage="true"
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
+        tools:replace="android:allowBackup">
+
+        <!-- =================================== -->
+        <!-- 🔔 إعدادات الإشعارات المحلية -->
+        <!-- =================================== -->
+        <meta-data
+            android:name="flutter_local_notifications.default_notification_channel_id"
+            android:value="default_channel" />
+
+        <!-- =================================== -->
+        <!-- 📍 إعدادات الموقع -->
+        <!-- =================================== -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY_HERE" />
+
+        <!-- =================================== -->
+        <!-- 🔥 النشاط الرئيسي -->
+        <!-- =================================== -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:screenOrientation="portrait">
+
+            <!-- ثيم Flutter العادي -->
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+
+            <!-- Intent filter للـ LAUNCHER -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+            <!-- Intent filter للروابط العميقة (اختياري) -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" />
+                <data android:host="yourapp.com" />
+            </intent-filter>
+        </activity>
+
+        <!-- =================================== -->
+        <!-- 📍 خدمات إضافية -->
+        <!-- =================================== -->
+        
+        <!-- مزود الموقع -->
+        <service
+            android:name="com.example.flutter_app.LocationService"
+            android:exported="false" />
+
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+        
+        <!-- دعم Android App Links -->
+        <meta-data
+            android:name="flutter_deeplinking_enabled"
+            android:value="true" />
+
+    </application>
+
+    <!-- =================================== -->
+    <!-- 🔍 استعلامات الخدمات (للتوافق) -->
+    <!-- =================================== -->
+    <queries>
+        <!-- للتعامل مع النص -->
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT" />
+            <data android:mimeType="text/plain" />
+        </intent>
+        
+        <!-- للتعرف على الصوت -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+        
+        <!-- للأوامر الصوتية -->
+        <intent>
+            <action android:name="android.intent.action.VOICE_COMMAND" />
+        </intent>
+        
+        <!-- للتحقق من خدمات الموقع -->
+        <intent>
+            <action android:name="android.location.LocationManager" />
+        </intent>
+        
+        <!-- للتحقق من وجود تطبيقات الكاميرا -->
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        
+        <!-- للتحقق من وجود متصفح -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="http" />
+        </intent>
+    </queries>
+
+</manifest>

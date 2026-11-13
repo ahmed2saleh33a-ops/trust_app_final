@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+  <!-- بشكل افتراضي لا نسمح بالـ HTTP -->
+  <base-config cleartextTrafficPermitted="false" />
+  <!-- اسمح بالـ HTTP لهذه الدومينات فقط (عدّل حسب احتياجك) -->
+  <domain-config cleartextTrafficPermitted="true">
+    <domain includeSubdomains="true">example.com</domain>
+    <domain includeSubdomains="true">cdn.example.com</domain>
+  </domain-config>
+</network-security-config>

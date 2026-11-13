@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 
+    نظام الفيديو الجديد يحتاج هذه المسارات:
+    1. للتخزين المؤقت أثناء المعالجة
+    2. لمشاركة الملفات بين التطبيق والمكتبات
+    3. لصلاحيات FileProvider
+    -->
+    
+    <!-- مسار الملفات الخارجية -->
+    <external-path 
+        name="external_files" 
+        path="." />
+    
+    <!-- مسار التخزين الداخلي -->
+    <files-path 
+        name="internal_files" 
+        path="." />
+    
+    <!-- مسار الكاش الداخلي -->
+    <cache-path 
+        name="internal_cache" 
+        path="." />
+    
+    <!-- مسار الكاش الخارجي -->
+    <external-cache-path 
+        name="external_cache" 
+        path="." />
+    
+    <!-- مسار الملفات الخارجية العامة -->
+    <external-files-path 
+        name="external_video_files" 
+        path="Movies/" />
+    
+    <!-- مسار التخزين الخارجي المباشر -->
+    <root-path 
+        name="root" 
+        path="." />
+    
+    <!-- مسار خاص لمقاطع الفيديو المقطوعة -->
+    <external-files-path 
+        name="trimmed_videos" 
+        path="Videos/Trimmed/" />
+    
+    <!-- مسار خاص للمقاطع بعد المعالجة -->
+    <external-files-path 
+        name="processed_videos" 
+        path="Videos/Processed/" />
+    
+    <!-- مسار للصور المصغرة -->
+    <external-files-path 
+        name="video_thumbnails" 
+        path="Pictures/Thumbnails/" />
+</paths>
